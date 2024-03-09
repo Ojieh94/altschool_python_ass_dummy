@@ -28,7 +28,7 @@ def create_order(payload: OrderCreate = Depends(order_service.check_availability
     orders.append(new_order)
     return {'message': 'Order created successfully', 'data': new_order}
 
-@order_router.post('/{order_id}', status_code=200)
+@order_router.put('/{order_id}', status_code=200)
 def checkout_order(order_id: int, checkout: bool):
     curr_order = None
     for order in orders:
